@@ -1,12 +1,6 @@
+from db import get_connection
 import mysql.connector
 
-def get_connection():
-    
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Mississippi21!"
-    )
 
 def setup_instabook(cursor):
     print("📱 Creating 'instabook' database...")
@@ -24,7 +18,7 @@ def setup_instabook(cursor):
         age INT
     )""")
     
-    # Insert sample users (Serena Williams, Beyoncé, Jane Doe)
+    # Insert sample users
     profiles = [
         (1, 'Serena Williams', 'serenawilliams', 'serena@venus.com', 'tennis', 40),
         (2, 'Beyonce Knowles', 'beyonce', 'bey@jay.com', 'halo', 40),
@@ -87,7 +81,7 @@ def main():
     
     try:
         print("🔌 Connecting to MySQL...")
-        conn = get_connection()
+        conn = get_connection()   # ← THIS IS WHERE YOU USE IT
         cursor = conn.cursor()
         print("   ✅ Connected successfully!\n")
         
@@ -126,7 +120,6 @@ if __name__ == "__main__":
 # ```
 #    cd Desktop/python-mysql-course
 # ```
-# 3. **IMPORTANT:** Edit `setup_database.py` and change `password="password"` to your actual MySQL password
-# 4. Run the script:
+# 3. Run the script:
 # ```
 #    python setup_database.py
