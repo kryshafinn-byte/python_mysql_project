@@ -1,12 +1,19 @@
 import mysql.connector
 
+from dotenv import load_dotenv
+import os
+import mysql.connector
+
+load_dotenv()
+
 def get_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Mississippi21!",
-        database="instabook"
+        host=os.getenv("MYSQL_HOST"),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
+        database=os.getenv("MYSQL_DATABASE")
     )
+
 
 
 def get_profile_by_id(connection, profile_id):
